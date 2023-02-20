@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  redis_flowerSpotCache:
+    image: redis
+
+  postgres_flowerspotdb:
+    image: postgres:latest
+
+  pgadmin:
+    image: dpage/pgadmin4
+
+  flowerspot.api:
+    image: ${DOCKER_REGISTRY-}flowerspotapi
+    build:
+      context: .
+      dockerfile: src/FlowerSpot.Api/Dockerfile
